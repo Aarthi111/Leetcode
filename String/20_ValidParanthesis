@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        char t='a';
+
+        for(char ch : s.toCharArray()){
+
+            if(stack.isEmpty()){
+                stack.push(ch);
+            }
+            else{
+                t = stack.peek();
+
+                if((t=='(' && ch==')') ||
+                   (t=='[' && ch==']') ||
+                   (t=='{' && ch=='}')){
+                    stack.pop();
+                }
+                else{
+                    stack.push(ch);
+                }
+            }
+        }
+
+        return stack.isEmpty();
+    }
+}
