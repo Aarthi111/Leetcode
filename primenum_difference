@@ -1,0 +1,36 @@
+import java.util.*;
+class Main{
+    static boolean isPrime(int n){
+        if(n<=1){
+            return false;
+        }
+        for(int i=2; i<=Math.sqrt(n);i++){
+            if(n%2==0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        TreeSet<Integer> s = new TreeSet<>();
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+        for(int i=0;i<n; i++){
+            if(isPrime(arr[i])){
+                s.add(arr[i]);
+            }
+        }
+        if(s.size()<=1){
+            System.out.println(0);
+        }
+        int largestPrime= s.last();
+        int smallestPRime = s.first();
+        System.out.println(largestPrime - smallestPrime);
+        
+    }
+}
